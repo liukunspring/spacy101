@@ -1,5 +1,5 @@
 import os
-import config
+from . import config
 from tokenizers import (
     decoders,
     models,
@@ -9,7 +9,6 @@ from tokenizers import (
     trainers,
     Tokenizer,
 )
-from tokenizers import BertWordPieceTokenizer
 
 """_summary_
 获取所有的训练tokenizer的语料
@@ -25,8 +24,7 @@ def get_token_files()->list:
         )
     return file_list
 def tain_tokenizer():
-    tokenizer = BertWordPieceTokenizer()
-    
+    tokenizer = Tokenizer(models.WordPiece(unk_token="[UNK]"))
     tokenizer.normalizer = normalizers.BertNormalizer(lowercase=True)
     tokenizer.pre_tokenizer = pre_tokenizers.BertPreTokenizer()
     tokenizer.pre_tokenizer.pre_tokenize_str("Let's test my pre-tokenizer.")
@@ -45,7 +43,7 @@ def load_tokenizer():
     
 
 if __name__=='__main__':
-    tain_tokenizer()
-    #load_tokenizer()
+    #tain_tokenizer()
+    load_tokenizer()
 
 

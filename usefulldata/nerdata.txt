@@ -1,0 +1,3 @@
+12-17 19:31:36.322  1795  2332 I qti_sensors_hal: [ACC]processReportInd: X: 5.989713 Y: 7.132575 Z: 4.153480  x_offset:0.160831 y_offset:0.184366 z_offset:0.985027
+12-17 19:31:36.359 31949 31967 I PushService: tcp.conn{4787} ServiceC.connectedNotify(ServiceC.java:289) 172.30.70.63
+12-17 19:31:36.344 31949 31967 I TCP     : tcp.conn{4787} TcpSocket.connect_i(TcpSocket.java:84) connecting to ip address uc.huawei.com/172.30.70.63
