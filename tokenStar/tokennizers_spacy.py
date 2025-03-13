@@ -5,19 +5,12 @@ from __init__ import PROJECT_ROOT
 from spacy.language import Language
 import re 
 from tokenizers import (
-    decoders,
-    models,
-    normalizers,
-    pre_tokenizers,
-    processors,
-    trainers,
     Tokenizer,
 )
 class BertTokenizer:
     def __init__(self, vocab, vocab_file, lowercase=True):
         self.vocab = vocab
         self._tokenizer = Tokenizer.from_file(vocab_file)
-
     def __call__(self, text):
         tokens = self._tokenizer.encode(text)
         words = []
@@ -33,8 +26,6 @@ class BertTokenizer:
             else:
                 spaces.append(True)
         return Doc(self.vocab, words=words, spaces=spaces)
-
-
 @Language.component("thread_tid_entities")
 def expand_person_entities(doc:Doc):
     tid_thread_regex=r'\{(\d+)\}'

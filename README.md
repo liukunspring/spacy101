@@ -1,6 +1,11 @@
 # spacy101
 spacy的ner实践工作。
 ## todo搞一个个简单的ner
+2025-3-13
+现在要把关键代码拆分成两部分
+tokenizer的训练部分。
+ner相关的正则式提取部分。
+下一步的工作要想着和drain部分结合了
 2025-2-28:
 做一下复盘：
 1. 为什么要用bert的分词方法作为spacy的tokenizer

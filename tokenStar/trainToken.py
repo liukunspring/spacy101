@@ -1,11 +1,10 @@
 import os
-from . import config
+from __init__ import PROJECT_ROOT,config
+from configs import token_config
 from tokenizers import (
-    decoders,
     models,
     normalizers,
     pre_tokenizers,
-    processors,
     trainers,
     Tokenizer,
 )
@@ -14,7 +13,7 @@ from tokenizers import (
 获取所有的训练tokenizer的语料
 """
 def get_token_files()->list:
-    
+
     file_list=[]
     for file_name in os.listdir(config.TOKEN_DATA_PATH):
         if 'log' not in file_name:
@@ -23,6 +22,7 @@ def get_token_files()->list:
             os.path.join(config.TOKEN_DATA_PATH,file_name)
         )
     return file_list
+
 def tain_tokenizer():
     tokenizer = Tokenizer(models.WordPiece(unk_token="[UNK]"))
     tokenizer.normalizer = normalizers.BertNormalizer(lowercase=True)
@@ -33,6 +33,7 @@ def tain_tokenizer():
     tokenizer.model = models.WordPiece(unk_token="[UNK]")
     tokenizer.train(get_token_files() , trainer=trainer)
     tokenizer.save('applog-tokenizer.json')
+
 def load_tokenizer():
     tokenizer = Tokenizer(models.WordPiece(unk_token="[UNK]"))
     tokenizer.normalizer = normalizers.BertNormalizer(lowercase=True)
@@ -43,7 +44,7 @@ def load_tokenizer():
     
 
 if __name__=='__main__':
-    #tain_tokenizer()
+    tain_tokenizer()
     load_tokenizer()
 
 
