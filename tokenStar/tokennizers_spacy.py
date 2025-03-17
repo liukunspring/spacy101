@@ -26,6 +26,7 @@ class BertTokenizer:
             else:
                 spaces.append(True)
         return Doc(self.vocab, words=words, spaces=spaces)
+
 @Language.component("thread_tid_entities")
 def expand_person_entities(doc:Doc):
     tid_thread_regex=r'\{(\d+)\}'
@@ -60,3 +61,21 @@ def expand_ip_address_entity(doc:Doc):
     print(new_ents)
     return doc
 
+@Language.component("float_number_entity")
+def expand_float_number__entity(doc:Doc):
+    # 正则式提取number;
+    float_number_regex=r'[: ](\d\.\d+)'
+    match = re.search(float_number_regex, doc.text)    
+    print('text',doc.text)
+    #print('match',match)
+    new_ents=list(doc.ents)
+    for match in re.finditer(float_number_regex, doc.text): 
+        if match:
+            print(match)
+            start,end=match.span(1)
+            span = doc.char_span(start, end,label='FLOAT_NUMER')
+            #print(span)
+            new_ents.append(span)
+    doc.ents = new_ents
+    print(new_ents)
+    return doc

@@ -1,6 +1,5 @@
 import os
 from __init__ import PROJECT_ROOT,config
-from configs import token_config
 from tokenizers import (
     models,
     normalizers,
@@ -13,7 +12,6 @@ from tokenizers import (
 获取所有的训练tokenizer的语料
 """
 def get_token_files()->list:
-
     file_list=[]
     for file_name in os.listdir(config.TOKEN_DATA_PATH):
         if 'log' not in file_name:
