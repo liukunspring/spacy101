@@ -48,15 +48,14 @@ def expand_person_entities(doc:Doc):
 def expand_ip_address_entity(doc:Doc):
     tid_thread_regex=r'(\d+\.\d+\.\d+\.\d+)'
     match = re.search(tid_thread_regex, doc.text)
-    print('text',doc.text)
+    #print('text',doc.text)
     #print('match',match)
     new_ents=list(doc.ents)
     if match:
         start,end=match.span(1)
         span = doc.char_span(start, end,label='IP_ADDRESS')
-        print(span)
+        print('ip_address_entity:',span)
         new_ents.append(span)
-        thread_id = match.group(1)
     doc.ents = new_ents
     print(new_ents)
     return doc
@@ -64,7 +63,7 @@ def expand_ip_address_entity(doc:Doc):
 @Language.component("float_number_entity")
 def expand_float_number__entity(doc:Doc):
     # 正则式提取number;
-    float_number_regex=r'[: ](\d\.\d+)'
+    float_number_regex=r'[: ]+(\d+\.\d+)[^\.]'
     match = re.search(float_number_regex, doc.text)    
     print('text',doc.text)
     #print('match',match)
@@ -73,9 +72,10 @@ def expand_float_number__entity(doc:Doc):
         if match:
             print(match)
             start,end=match.span(1)
-            span = doc.char_span(start, end,label='FLOAT_NUMER')
+            span = doc.char_span(start, end,label='FLOAT_NUMER',alignment_mode='')
+            if span:
             #print(span)
-            new_ents.append(span)
+                new_ents.append(span)
     doc.ents = new_ents
     print(new_ents)
     return doc
