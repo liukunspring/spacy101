@@ -41,7 +41,7 @@ def expand_person_entities(doc:Doc):
         new_ents.append(span)
         thread_id = match.group(1)
     doc.ents = new_ents
-    print(new_ents)
+    #print(new_ents)
     return doc
 
 @Language.component("ip_address_entity")
@@ -57,7 +57,7 @@ def expand_ip_address_entity(doc:Doc):
         print('ip_address_entity:',span)
         new_ents.append(span)
     doc.ents = new_ents
-    print(new_ents)
+    #print(new_ents)
     return doc
 
 @Language.component("float_number_entity")
@@ -72,10 +72,30 @@ def expand_float_number__entity(doc:Doc):
         if match:
             print(match)
             start,end=match.span(1)
-            span = doc.char_span(start, end,label='FLOAT_NUMER',alignment_mode='')
+            span = doc.char_span(start, end,label='FLOAT_NUMER')
             if span:
-            #print(span)
+                print('float_number_entity',span)
                 new_ents.append(span)
     doc.ents = new_ents
-    print(new_ents)
+    #print(new_ents)
+    return doc
+
+@Language.component("common_number_entity")
+def expand_float_number__entity(doc:Doc):
+    # 正则式提取number;
+    float_number_regex=r'[: =]+(-?\d+)[^\.]'
+    match = re.search(float_number_regex, doc.text)    
+    print('text',doc.text)
+    #print('match',match)
+    new_ents=list(doc.ents)
+    for match in re.finditer(float_number_regex, doc.text): 
+        if match:
+            print(match)
+            start,end=match.span(1)
+            span = doc.char_span(start, end,label='COMMON_NUMER')
+            if span:
+                print('float_number_entity',span)
+                new_ents.append(span)
+    doc.ents = new_ents
+    #print(new_ents)
     return doc
