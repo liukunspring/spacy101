@@ -1,7 +1,7 @@
 import spacy
 from spacy.language import Language
 from spacy.tokens import Doc
-
+import json
 import os 
 from tokenStar import tokennizers_spacy
 from config import PROJECT_ROOT
@@ -45,4 +45,5 @@ def dump_ner(text,nlp:Language):
 if __name__=='__main__':
     nlp=build_nlp_instance()
     text="I eSpaceService: WatchThread {4786} TcpCirChannel.shutdown(TcpCirChannel.java:257) Login_By_Step-> shut down now connec"
-    dump_ner(text,nlp)
+    ret=dump_ner(text,nlp)
+    print(json.dumps(ret,indent=4,ensure_ascii=False))

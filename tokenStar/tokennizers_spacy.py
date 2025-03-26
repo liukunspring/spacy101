@@ -63,7 +63,7 @@ def expand_ip_address_entity(doc:Doc):
 @Language.component("float_number_entity")
 def expand_float_number__entity(doc:Doc):
     # 正则式提取number;
-    float_number_regex=r'[: ]+(\d+\.\d+)[^\.]'
+    float_number_regex=r'[: =]+(\d+\.\d+)[^\.]'
     match = re.search(float_number_regex, doc.text)    
     print('text',doc.text)
     #print('match',match)

@@ -1,6 +1,13 @@
 # spacy101
 spacy的ner实践工作。
 ## todo搞一个个简单的ner
+2025-3-26：
+准备建立数据集了，以后再把文件名给抽取出来。
+如下所示
+还有离散的状态给取出来： true false on off等。
+W HwLockScreenReporter: report result = falsereport type:162 msg:{picture: Deepwater-05-2.3.001-bigpicture_05_8.jpg, channelId: 05}
+
+
 2025-3-18
 现在要把，ip地址，浮点数，数字这些内容都抽取出来。
 1. 要解决实体冲突的问题。

@@ -1,7 +1,7 @@
 import os 
 from __init__ import PROJECT_ROOT
 import re
-number_regex=re.compile('/d')
+number_regex=re.compile('\d+')
 def cut_last_n_file(column_num,file_path,target_file):
     """
     切割文件的后n列之后的数据
@@ -13,16 +13,15 @@ def cut_last_n_file(column_num,file_path,target_file):
             cut_line=line_data[column_num:]
             #print(cut_line)
             line_data=in_file.readline()
-            if number_regex.search(cut_line):
+            # if '/' in cut_line:
+            #     print(cut_line)
+            #     continue
+            if number_regex.findall(cut_line):
                 tf.write(cut_line)
                 i+=1
             if i>5000:
                 break
 
-def dump_ner(text):
-    # 转换ner的数据
-    
-    pass
 
 if __name__=='__main__':
     cut_last_n_file(31,
