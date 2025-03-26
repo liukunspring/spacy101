@@ -1,3 +1,4 @@
 spacy
 transformers
 tokenizers
+fastapi

@@ -7,7 +7,12 @@ spacy的ner实践工作。
 还有离散的状态给取出来： true false on off等。
 W HwLockScreenReporter: report result = falsereport type:162 msg:{picture: Deepwater-05-2.3.001-bigpicture_05_8.jpg, channelId: 05}
 
+```
+还是选用fastapiserver服务，集成daoccano的自动标注服务了
 
+pip install fastapi[standard]
+
+```
 2025-3-18
 现在要把，ip地址，浮点数，数字这些内容都抽取出来。
 1. 要解决实体冲突的问题。
