@@ -2,3 +2,7 @@ spacy
 transformers
 tokenizers
 fastapi
+label-studio-ml
+rq
+redis
+label_studio_sdk

@@ -13,6 +13,14 @@ W HwLockScreenReporter: report result = falsereport type:162 msg:{picture: Deepw
 pip install fastapi[standard]
 
 ```
+2025-4-9
+安装label-studio-ml
+pip install git+https://github.com/HumanSignal/label-studio-ml-backend@master
+label-studio-ml create my_ml_backend
+
+label_studio_sdk
+
+单纯的安装label-studio-ml有点问题。
 2025-3-18
 现在要把，ip地址，浮点数，数字这些内容都抽取出来。
 1. 要解决实体冲突的问题。
