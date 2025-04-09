@@ -21,6 +21,10 @@ label-studio-ml create my_ml_backend
 label_studio_sdk
 
 单纯的安装label-studio-ml有点问题。
+---------------------------
+按照一下label-studio
+创建用户名字
+label-studio start  --username dream@163.com --password test.com
 2025-3-18
 现在要把，ip地址，浮点数，数字这些内容都抽取出来。
 1. 要解决实体冲突的问题。
