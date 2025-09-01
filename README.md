@@ -1,18 +1,17 @@
 # spacy101
 spacy的ner实践工作。
 ## todo搞一个个简单的ner
-2025-3-26：
-准备建立数据集了，以后再把文件名给抽取出来。
-如下所示
-还有离散的状态给取出来： true false on off等。
-W HwLockScreenReporter: report result = falsereport type:162 msg:{picture: Deepwater-05-2.3.001-bigpicture_05_8.jpg, channelId: 05}
+2025-0901
+基于json的数据集搭建好了，要晚上一下数据集的代码，数据集比较小一共才55个，流程跑通了。
+然后基于大模型去帮忙生成数据集
 
-```
-还是选用fastapiserver服务，集成daoccano的自动标注服务了
+2025-07-29
+label搭建起来了，假设可以生成不错的数据集。
+然后我们应该可以训练一个ner了。
+1. 完成基于json的训练数据集处理。
 
-pip install fastapi[standard]
+2025-4-11
 
-```
 2025-4-9
 安装label-studio-ml
 pip install git+https://github.com/HumanSignal/label-studio-ml-backend@master
@@ -25,6 +24,19 @@ label_studio_sdk
 按照一下label-studio
 创建用户名字
 label-studio start  --username dream@163.com --password test.com
+2025-3-26：
+准备建立数据集了，以后再把文件名给抽取出来。
+如下所示
+还有离散的状态给取出来： true false on off等。
+W HwLockScreenReporter: report result = falsereport type:162 msg:{picture: Deepwater-05-2.3.001-bigpicture_05_8.jpg, channelId: 05}
+
+```
+还是选用fastapiserver服务，集成daoccano的自动标注服务了
+
+pip install fastapi[standard]
+
+```
+
 2025-3-18
 现在要把，ip地址，浮点数，数字这些内容都抽取出来。
 1. 要解决实体冲突的问题。
